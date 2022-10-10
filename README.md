@@ -1,5 +1,5 @@
-# Traveling Salesman Problem
-Compute the optimal route for an salesman given destination points.
+# Travelling Salesman Problem - BackEnd
+Compute the optimal route for a salesman given locations that must be visited.
 
 ## Steps
 * Receive the request with the selected locations that must be visited.
