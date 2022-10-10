@@ -14,7 +14,7 @@ app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URI")
 
-cors = CORS(app, origins=[ "http://localhost:3000", "https://tsp-front.vercel.app"])
+cors = CORS(app, origins=["https://tsp.gerardomz.com/"])
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
