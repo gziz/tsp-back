@@ -2,6 +2,7 @@ from flask import Blueprint,render_template,redirect,url_for, request, jsonify
 from project import db
 from project.models import Location, format_location
 from tsp.tsp import tsp
+import pandas as pd
 
 locations_blueprint = Blueprint('locations', #2
                                 __name__,
@@ -11,9 +12,12 @@ locations_blueprint = Blueprint('locations', #2
 #GET ALL EVENTS
 @locations_blueprint.route('/create_route', methods=['GET']) #1
 def get_locations():
-
-    locations = Location.query.all()
-    locations = [format_location(loc) for loc in locations]
+    try:
+        locations = Location.query.all()
+        locations = [format_location(loc) for loc in locations]
+    except:
+        locations = pd.read_csv('../data/cengage-fake.csv')
+        locations = [format_location(loc) for idx, loc in locations.iterrows()]
 
     response = jsonify({'locations': locations})
     response.headers.add('Access-Control-Allow-Origin', "*")
